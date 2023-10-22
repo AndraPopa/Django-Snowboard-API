@@ -3,6 +3,7 @@ from .models import Snowboard
 from .serializers import SnowboardSerializer
 from django.forms import modelform_factory
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
 
 class SnowboardView(viewsets.ModelViewSet):
@@ -13,5 +14,5 @@ class SnowboardView(viewsets.ModelViewSet):
 SnowboardForm = modelform_factory(Snowboard, exclude=[])
 
 
-def choose_snowboard(request):
-    return render(request, 'choose_snowboard.html', {'name': 'Rider'})
+class ChooseSnowboardView(TemplateView):
+    template_name = 'choose_snowboard.html'
