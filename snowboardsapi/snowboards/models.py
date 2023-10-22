@@ -34,6 +34,7 @@ class Snowboard(models.Model):
     )
     length_size = models.IntegerField(null=False)
     price = models.FloatField(null=False)
+    reference_link = models.CharField(max_length=300, null=True)
 
     def __str__(self):
         return self.model_name
