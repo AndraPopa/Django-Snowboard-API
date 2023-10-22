@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from rest_framework import viewsets
+from .models import Snowboard
+from .serializers import SnowboardSerializer
 
-# Create your views here.
+
+class SnowboardView(viewsets.ModelViewSet):
+    queryset = Snowboard.objects.all()
+    serializer_class = SnowboardSerializer
