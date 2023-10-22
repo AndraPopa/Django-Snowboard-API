@@ -16,3 +16,9 @@ SnowboardForm = modelform_factory(Snowboard, exclude=[])
 
 class ChooseSnowboardView(TemplateView):
     template_name = 'choose_snowboard.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['name'] = 'Little Corgi Rider'
+        return context
+
