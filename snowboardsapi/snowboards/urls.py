@@ -7,4 +7,5 @@ router.register('api/snowboards', views.SnowboardView)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('hello-rider/', views.choose_snowboard)
 ]
