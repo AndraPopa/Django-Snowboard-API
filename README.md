@@ -1,1 +1,1 @@
-# Django-Snowboard-API
+# Django-Snowboard-APIdjango
