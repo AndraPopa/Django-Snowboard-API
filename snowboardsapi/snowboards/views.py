@@ -14,4 +14,4 @@ SnowboardForm = modelform_factory(Snowboard, exclude=[])
 
 
 def choose_snowboard(request):
-    return render(request, 'hello.html', {'name': 'Rider'})
+    return render(request, 'choose_snowboard.html', {'name': 'Rider'})
