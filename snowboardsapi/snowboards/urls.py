@@ -3,7 +3,7 @@ from . import views
 from rest_framework import routers
 
 router = routers.DefaultRouter()
-router.register('snowboards', views.SnowboardView)
+router.register('api/snowboards', views.SnowboardView)
 
 urlpatterns = [
     path('', include(router.urls)),

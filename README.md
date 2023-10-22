@@ -11,4 +11,4 @@ Clone this repository and make sure you install the requirements: <code>pip inst
 Then run the localhost server by navigating to the 
 _snowboardsapi_ folder and typing <code>python manage.py runserver</code>.
 
-Open a browser and navigate to http://127.0.0.1:8000/snowboards/ for the **REST implementation** of the Snowboard Models API.
+Open a browser and navigate to http://127.0.0.1:8000/api/snowboards/ for the **REST implementation** of the Snowboard Models API.
