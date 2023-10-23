@@ -17,6 +17,7 @@ class ChooseSnowboardView(TemplateView):
         return render(request, self.template_name, {'name': 'Rider!'})
 
     def post(self, request, *args, **kwargs):
+        global gender
         if request.method == "POST":
 
             boy = request.POST.get('boy', False)
@@ -31,14 +32,16 @@ class ChooseSnowboardView(TemplateView):
             }
 
             if boy:
-                return redirect('/boys-who-ride/')
+                gender = boy
             elif girl:
-                return redirect('/girls-who-ride/')
+                gender = girl
+
+            return redirect(f'/your-next-snowboard/?gender={gender}')
 
 
-class GirlsBoardsView(TemplateView):
-    template_name = 'girls_who_ride.html'
+class YourNextSnowboardView(TemplateView):
+    template_name = 'snowboard_list.html'
 
-
-class BoysBoardsView(TemplateView):
-    template_name = 'boys_who_ride.html'
+    def get(self, request, *arg, **kwargs):
+        gender = request.GET.get('gender')
+        return render(request, self.template_name, {'gender': gender})
