@@ -9,43 +9,41 @@
     {% endif %}
 
   <form method="POST">
-    <h3 align="center">Sign Up</h3>
+      {% csrf_token %}
+
+    <h3 align="center">*** Tell me about your riding style ***</h3>
     <div class="form-group">
-        <label for="email">Email Address</label>
-        <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                placeholder="Enter email"
-        />
-        <label for="firstName">First Name</label>
+        <h4>Are you a boy or a girl?</h4>
+        <input type="checkbox" id="boy" name="boy" value="Boy">
+        <label for="boy">Boy</label>
+        <input type="checkbox" id="girl" name="girl" value="Girl">
+        <label for="boy">Girl</label><br><br>
+        <h4><label for="height">Enter your height (cm)</label></h4>
         <input
                 type="text"
                 class="form-control"
-                id="firstName"
-                name="firstName"
-                placeholder="Enter first name"
-        />
-        <label for="password1">Password</label>
+                id="height"
+                name="height"
+                placeholder="Height in cm"
+        /><br><br>
+        <h4>Do you love freestyle or free-ride or both?</h4>
+        <input type="checkbox" id="freestyle" name="freestyle" value="Freestyle">
+        <label for="boy">Freestyle all the way!</label>
+        <input type="checkbox" id="freeride" name="freeride" value="Freeride">
+        <label for="boy">Free-ride for the win!</label>
+        <input type="checkbox" id="both" name="both" value="Both">
+        <label for="boy">Can't choose. Both!</label><br><br>
+        <h4><label for="skills">Rate your skills...type rookie/intermediate/prorider</label></h4>
         <input
-                type="password"
+                type="text"
                 class="form-control"
-                id="password1"
-                name="password1"
-                placeholder="Enter password"
-        />
-        <label for="password2">Password (Confirm)</label>
-        <input
-                type="password"
-                class="form-control"
-                id="password2"
-                name="password2"
-                placeholder="Confirm password"
-        />
+                id="skills"
+                name="skills"
+                placeholder="rookie/intermediate/prorider"
+        /><br><br>
     </div>
     <br/>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary">Submit and let's hit the slopes!</button>
 </form>
 
 
