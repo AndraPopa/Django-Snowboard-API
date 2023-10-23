@@ -1,5 +1,5 @@
 from django.views.generic import TemplateView
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework import viewsets
 from .models import Snowboard
 from .serializers import SnowboardSerializer
@@ -26,4 +26,12 @@ class ChooseSnowboardView(TemplateView):
             height = request.POST['height']
             skills = request.POST['skills']
 
-        return render(request, self.template_name, {'name':  girl})
+            return render(request, self.template_name, {'name': girl})
+
+
+class GirlsBoardsView(TemplateView):
+    template_name = 'girls_who_ride.html'
+
+
+class BoysBoardsView(TemplateView):
+    template_name = 'boys_who_ride.html'
