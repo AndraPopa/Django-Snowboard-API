@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+          {% load static %}
 
-  <body>
+  <body id="bg" style="background-image: url('{% static "snowboard_gang.jpg" %}')">
 
     {% if name %}
     <h1>Hello {{ name }}</h1>
@@ -12,7 +13,7 @@
   <form method="POST">
       {% csrf_token %}
 
-    <h3 align="center">*** Tell me about your riding style ***</h3>
+    <h2 align="center">Tell me about your riding style :)</h2>
     <div class="form-group">
         <h4>Are you a boy or a girl?</h4>
         <input type="checkbox" id="boy" name="boy" value="Boy">
@@ -46,11 +47,7 @@
     <br/>
     <button type="submit" class="btn btn-primary">Submit and let's hit the slopes!</button>
 
-      {% load static %}
-    <img src="{% static "snowboard.jpg" %}" alt="My image"/>
 </form>
-
-
   </body>
 
 </html>
