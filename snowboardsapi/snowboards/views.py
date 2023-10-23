@@ -18,15 +18,22 @@ class ChooseSnowboardView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         if request.method == "POST":
+
             boy = request.POST.get('boy', False)
             girl = request.POST.get('girl', False)
-            freestyle = request.POST.get('freestyle', False)
-            freeride = request.POST.get('freeride', False)
-            both = request.POST.get('both', False)
-            height = request.POST['height']
-            skills = request.POST['skills']
 
-            return render(request, self.template_name, {'name': girl})
+            attributes_dict = {
+                'freestyle': request.POST.get('freestyle', False),
+                'freeride': request.POST.get('freeride', False),
+                'both': request.POST.get('both', False),
+                'height': request.POST['height'],
+                'skills': request.POST['skills'],
+            }
+
+            if boy:
+                return redirect('/boys-who-ride/')
+            elif girl:
+                return redirect('/girls-who-ride/')
 
 
 class GirlsBoardsView(TemplateView):
