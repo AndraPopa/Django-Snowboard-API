@@ -7,9 +7,14 @@
 </head>
           {% load static %}
 
-  <body id="bg" style="background-image: url('{% static "snowboard_gang.jpg" %}')">
+<body>
+<!--  <body id="bg" style="background-image: url('{% static "snowboard_gang.jpg" %}')">-->
 
 <h1>{{gender}}s who ride :)</h1>
+
+{% for snowboard in snowboards%}
+<p>the snowboard name is {{ snowboard }}</p>
+{% endfor %}
 
 </body>
 </html>

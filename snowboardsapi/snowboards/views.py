@@ -1,4 +1,4 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.shortcuts import render, redirect
 from rest_framework import viewsets
 from .models import Snowboard
@@ -39,9 +39,11 @@ class ChooseSnowboardView(TemplateView):
             return redirect(f'/your-next-snowboard/?gender={gender}')
 
 
-class YourNextSnowboardView(TemplateView):
+class YourNextSnowboardView(ListView):
     template_name = 'snowboard_list.html'
+    serializer_class = SnowboardSerializer
 
     def get(self, request, *arg, **kwargs):
         gender = request.GET.get('gender')
-        return render(request, self.template_name, {'gender': gender})
+        queryset = Snowboard.objects.all()
+        return render(request, self.template_name, {'gender': gender, 'snowboards': queryset})
