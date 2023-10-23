@@ -19,11 +19,11 @@
 
     <h2 align="center">Tell me about your riding style :)</h2>
     <div class="form-group">
-        <h4>Are you a boy or a girl?</h4>
-        <input type="checkbox" id="boy" name="boy" value="boy">
-        <label for="boy">Boy</label>
-        <input type="checkbox" id="girl" name="girl" value="girl">
-        <label for="boy">Girl</label><br><br>
+        <h4><label for ="gender"> Are you a boy or a girl?</label></h4>
+        <select name="gender" id="gender">
+            <option value="boy">Boy</option>
+            <option value="girl">Girl</option>
+        </select>
         <h4><label for="height">Enter your height (cm)</label></h4>
         <input
                 type="text"
@@ -32,21 +32,20 @@
                 name="height"
                 placeholder="Height in cm"
         /><br><br>
-        <h4>Do you love freestyle or free-ride or both?</h4>
-        <input type="checkbox" id="freestyle" name="freestyle" value="Freestyle">
-        <label for="boy">Freestyle all the way!</label>
-        <input type="checkbox" id="freeride" name="freeride" value="Freeride">
-        <label for="boy">Free-ride for the win!</label>
-        <input type="checkbox" id="both" name="both" value="Both">
-        <label for="boy">Can't choose. Both!</label><br><br>
-        <h4><label for="skills">Rate your skills...type rookie/intermediate/prorider</label></h4>
-        <input
-                type="text"
-                class="form-control"
-                id="skills"
-                name="skills"
-                placeholder="rookie/intermediate/prorider"
-        /><br><br>
+        <h4><label for ="style">Do you love freestyle of free-ride or both?</label></h4>
+        <select name="style" id="style">
+            <option value="freeride">Free-ride</option>
+            <option value="freestyle">Freestyle</option>
+            <option value="both">Both</option>
+        </select>
+        <br><br>
+        <h4><label for ="skills"></label>Rate your skills...</h4>
+        <select name="skills" id="skills">
+            <option value="rookie">Rookie</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="prorider">Pro-rider</option>
+        </select>
+        <br><br>
     </div>
     <br/>
     <button type="submit" class="btn btn-primary">Submit and let's hit the slopes!</button>

@@ -20,21 +20,12 @@ class ChooseSnowboardView(TemplateView):
         global gender
         if request.method == "POST":
 
-            boy = request.POST.get('boy', False)
-            girl = request.POST.get('girl', False)
+            gender = request.POST.get('gender')
 
             attributes_dict = {
-                'freestyle': request.POST.get('freestyle', False),
-                'freeride': request.POST.get('freeride', False),
-                'both': request.POST.get('both', False),
-                'height': request.POST['height'],
-                'skills': request.POST['skills'],
+                'height': request.POST.get('height'),
+                'skills': request.POST.get('skills'),
             }
-
-            if boy:
-                gender = boy
-            elif girl:
-                gender = girl
 
             return redirect(f'/your-next-snowboard/?gender={gender}')
 
