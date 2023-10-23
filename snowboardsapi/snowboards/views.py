@@ -42,8 +42,13 @@ class ChooseSnowboardView(TemplateView):
 class YourNextSnowboardView(ListView):
     template_name = 'snowboard_list.html'
     serializer_class = SnowboardSerializer
+    queryset = Snowboard.objects.all()
 
     def get(self, request, *arg, **kwargs):
         gender = request.GET.get('gender')
         queryset = Snowboard.objects.all()
+        if gender == 'girl':
+            queryset = queryset.filter(gender='Female')
+        elif gender == 'boy':
+            queryset = queryset.filter(gender='Male')
         return render(request, self.template_name, {'gender': gender, 'snowboards': queryset})
