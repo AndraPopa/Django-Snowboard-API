@@ -12,7 +12,9 @@
 <h1>{{gender}}s who ride :)</h1>
 
 {% for snowboard in snowboards%}
-<h2>{{ snowboard }}</h2>
+<h2><a href="{{ snowboard.reference_link }}">{{ snowboard }}</a></h2>
+<p>Style: {{ snowboard.style }}&nbsp;&nbsp;&nbsp;Price: {{ snowboard.price_euro }}€&nbsp;&nbsp;&nbsp;Profile: {{ snowboard.type }}</p>
+<br><br>
 {% endfor %}
 
 </body>
