@@ -19,7 +19,6 @@ class ChooseSnowboardView(TemplateView):
     def post(self, request, *args, **kwargs):
         global gender
         if request.method == "POST":
-
             gender = request.POST.get('gender')
 
             attributes_dict = {
@@ -38,8 +37,11 @@ class YourNextSnowboardView(ListView):
     def get(self, request, *arg, **kwargs):
         gender = request.GET.get('gender')
         queryset = Snowboard.objects.all()
-        if gender == 'girl':
-            queryset = queryset.filter(gender='Female')
-        elif gender == 'boy':
-            queryset = queryset.filter(gender='Male')
+        filter = process_queryset(gender)
+        queryset = queryset.filter(gender=filter['gender'])
         return render(request, self.template_name, {'gender': gender, 'snowboards': queryset})
+
+
+def process_queryset(gender, skills):
+    filter_dict = {'gender': 'Female' if gender == 'girl' else 'Male'}
+    return filter_dict
