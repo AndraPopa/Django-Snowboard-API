@@ -21,6 +21,10 @@ class Snowboard(models.Model):
         FREE_RIDE = 'Free-ride'
         ALL_MOUNTAIN = 'All mountain'
 
+    class LevelChoices(models.TextChoices):
+        BEGINNER = 'Beginner',
+        INT_ADV = 'Intermediate-Advanced'
+
     model_name = models.CharField(max_length=200, null=False)
     style = models.CharField(
         max_length=15,
@@ -41,6 +45,11 @@ class Snowboard(models.Model):
         max_length=15,
         choices=YearChoices.choices,
         default=YearChoices.this_year
+    )
+    level = models.CharField(
+        max_length=30,
+        choices=LevelChoices.choices,
+        default=LevelChoices.INT_ADV
     )
     length_size = models.IntegerField(null=False)
     price_euro = models.FloatField(null=False)
