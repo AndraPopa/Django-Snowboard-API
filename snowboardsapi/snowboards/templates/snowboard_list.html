@@ -13,7 +13,12 @@
 
 {% for snowboard in snowboards%}
 <h2><a href="{{ snowboard.reference_link }}">{{ snowboard }}</a></h2>
-<p>Style: {{ snowboard.style }}&nbsp;&nbsp;&nbsp;Price: {{ snowboard.price_euro }}€&nbsp;&nbsp;&nbsp;Profile: {{ snowboard.type }}</p>
+<p>
+    Style: {{ snowboard.style }}&nbsp;&nbsp;&nbsp;
+    Price: {{ snowboard.price_euro }}€&nbsp;&nbsp;&nbsp;
+    Profile: {{ snowboard.type }}&nbsp;&nbsp;&nbsp;
+    Year: {{ snowboard.year }}
+</p>
 <br><br>
 {% endfor %}
 
