@@ -42,6 +42,6 @@ class YourNextSnowboardView(ListView):
         return render(request, self.template_name, {'gender': gender, 'snowboards': queryset})
 
 
-def process_queryset(gender, skills):
+def process_queryset(gender):
     filter_dict = {'gender': 'Female' if gender == 'girl' else 'Male'}
     return filter_dict
