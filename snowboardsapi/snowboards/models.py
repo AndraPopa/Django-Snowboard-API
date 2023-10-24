@@ -23,7 +23,7 @@ class Snowboard(models.Model):
 
     class LevelChoices(models.TextChoices):
         BEGINNER = 'Beginner',
-        INT_ADV = 'Intermediate-Advanced'
+        INTERMEDIATE_ADVANCED = 'Intermediate-Advanced'
 
     model_name = models.CharField(max_length=200, null=False)
     style = models.CharField(
@@ -49,7 +49,7 @@ class Snowboard(models.Model):
     level = models.CharField(
         max_length=30,
         choices=LevelChoices.choices,
-        default=LevelChoices.INT_ADV
+        default=LevelChoices.INTERMEDIATE_ADVANCED
     )
     length_size = models.IntegerField(null=False)
     price_euro = models.FloatField(null=False)
