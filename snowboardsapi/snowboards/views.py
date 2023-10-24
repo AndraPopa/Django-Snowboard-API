@@ -20,11 +20,13 @@ class ChooseSnowboardView(TemplateView):
         global gender
         if request.method == "POST":
             gender = request.POST.get('gender')
-
+            style = request.POST.get('style')
             height = request.POST.get('height'),
             skills = request.POST.get('skills'),
 
-            return redirect(f'/your-next-snowboard/?gender={gender}&skills={skills}')
+            return redirect(
+                f'/your-next-snowboard/?gender={gender}&skills={skills}&style={style}'
+            )
 
 
 class YourNextSnowboardView(ListView):
@@ -35,13 +37,24 @@ class YourNextSnowboardView(ListView):
     def get(self, request, *arg, **kwargs):
         gender = request.GET.get('gender')
         skills = request.GET.get('skills')
+        style = request.GET.get('style')
         queryset = Snowboard.objects.all()
-        filter = process_queryset(gender, skills)
-        queryset = queryset.filter(gender=filter['gender'], level=filter['level'])
+        filter = process_queryset(gender, skills, style)
+        queryset = queryset.filter(
+            gender=filter['gender'],
+            level=filter['level'],
+            style=filter['style']
+        )
         return render(request, self.template_name, {'gender': gender, 'snowboards': queryset})
 
 
-def process_queryset(gender, skills):
+def process_queryset(gender, skills, style):
     filter_dict = {'gender': 'Female' if gender == 'girl' else 'Male',
                    'level': 'Beginner' if 'rookie' in skills else 'Intermediate-Advanced'}
+    if style == 'freestyle':
+        filter_dict['style'] = 'Park'
+    elif style == 'freeride':
+        filter_dict['style'] = 'Free Ride'
+    else:
+        filter_dict['style'] = 'All Mountain'
     return filter_dict
