@@ -41,7 +41,7 @@ class YourNextSnowboardView(ListView):
         rider_name = request.GET.get('rider_name').split("'")[1].split("'")[0]
         filter = process_queryset(gender, skills, style)
         queryset = Snowboard.objects.filter(
-            gender=filter['gender'],
+            gender__in=[filter['gender'], 'Unisex'],
             style=filter['style'],
             level=filter['level'],
         )
