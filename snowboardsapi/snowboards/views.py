@@ -10,7 +10,7 @@ class SnowboardView(viewsets.ModelViewSet):
     serializer_class = SnowboardSerializer
 
 
-class ChooseSnowboardView(TemplateView):
+class RiderInfoView(TemplateView):
     template_name = 'snow_form.html'
 
     def get(self, request, *arg, **kwargs):
@@ -23,9 +23,14 @@ class ChooseSnowboardView(TemplateView):
             style = request.POST.get('style')
             rider_name = request.POST.get('rider_name'),
             skills = request.POST.get('skills'),
-
+            height = request.POST.get('height')
             return redirect(
-                f'/your-next-snowboard/?rider_name={rider_name}&gender={gender}&skills={skills}&style={style}'
+                f'/your-next-snowboard/'
+                f'?rider_name={rider_name}'
+                f'&gender={gender}'
+                f'&skills={skills}'
+                f'&style={style}'
+                f'&height={height}'
             )
 
 
@@ -38,6 +43,8 @@ class YourNextSnowboardView(ListView):
         gender = request.GET.get('gender')
         skills = request.GET.get('skills')
         style = request.GET.get('style')
+        height = request.GET.get('height')
+        print(height)
         rider_name = request.GET.get('rider_name').split("'")[1].split("'")[0]
         filter = process_queryset(gender, skills, style)
         queryset = Snowboard.objects.filter(
