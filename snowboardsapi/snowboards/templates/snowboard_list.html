@@ -28,5 +28,11 @@
 <br><br>
 {% endfor %}
 
+{% if size_range %}
+<h3>Recommended size range: {{ size_range }}</h3>
+{% else %}
+<h2>You did not enter your height, so we can not make recommendations for sizing.</h2>
+{% endif %}
+
 </body>
 </html>
