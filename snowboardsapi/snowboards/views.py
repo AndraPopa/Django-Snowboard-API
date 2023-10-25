@@ -41,12 +41,8 @@ class YourNextSnowboardView(ListView):
         filter = process_queryset(gender, skills, style)
         queryset = Snowboard.objects.filter(
             gender=filter['gender'],
-            level=filter['level'],
             style=filter['style'],
-        ) & Snowboard.objects.filter(
-            gender='Unisex',
             level=filter['level'],
-            style=filter['style'],
         )
         return render(request, self.template_name, {'gender': gender, 'snowboards': queryset})
 
@@ -59,5 +55,5 @@ def process_queryset(gender, skills, style):
     elif style == 'freeride':
         filter_dict['style'] = 'Free Ride'
     else:
-        filter_dict['style'] = 'All Mountain'
+        filter_dict['style'] = 'All mountain'
     return filter_dict
