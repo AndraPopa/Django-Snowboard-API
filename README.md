@@ -12,3 +12,5 @@ Then run the localhost server by navigating to the
 _snowboardsapi_ folder and typing <code>python manage.py runserver</code>.
 
 Open a browser and navigate to http://127.0.0.1:8000/api/snowboards/ for the **REST implementation** of the Snowboard Models API.
+
+Navigate to **http://127.0.0.1:8000/hello-rider/** and check out the form. Enter your details and you will be prompted with **board recommendations** based on your profile.
