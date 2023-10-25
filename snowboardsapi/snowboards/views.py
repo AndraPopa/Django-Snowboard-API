@@ -55,7 +55,7 @@ def process_queryset(gender, skills, style):
     if style == 'freestyle':
         filter_dict['style'] = 'Park'
     elif style == 'freeride':
-        filter_dict['style'] = 'Free Ride'
+        filter_dict['style'] = 'Freeride'
     else:
         filter_dict['style'] = 'All mountain'
     return filter_dict

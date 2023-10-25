@@ -18,7 +18,7 @@ class Snowboard(models.Model):
 
     class StyleChoices(models.TextChoices):
         PARK = 'Park',
-        FREE_RIDE = 'Free-ride'
+        FREE_RIDE = 'Freeride'
         ALL_MOUNTAIN = 'All mountain'
 
     class LevelChoices(models.TextChoices):
