@@ -42,7 +42,11 @@ class YourNextSnowboardView(ListView):
         queryset = Snowboard.objects.filter(
             gender=filter['gender'],
             level=filter['level'],
-            style=filter['style']
+            style=filter['style'],
+        ) & Snowboard.objects.filter(
+            gender='Unisex',
+            level=filter['level'],
+            style=filter['style'],
         )
         return render(request, self.template_name, {'gender': gender, 'snowboards': queryset})
 
