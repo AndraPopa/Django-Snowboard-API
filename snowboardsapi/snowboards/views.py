@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from rest_framework import viewsets
 from .models import Snowboard
 from .serializers import SnowboardSerializer
+from .process_snowboards import process_queryset, process_size_range
 
 
 class SnowboardView(viewsets.ModelViewSet):
@@ -58,42 +59,3 @@ class YourNextSnowboardView(ListView):
                       self.template_name,
                       {'gender': gender, 'snowboards': queryset, 'rider_name': rider_name, 'size_range': size_range})
 
-
-freeride_size_chart = {
-    'lt_160': '145-151',
-    'gt_160_lt_170': '151-155',
-    'gt_170_lt_180': '155-158',
-    'gt_180': '158-160'
-}
-
-park_size_chart = {
-    'lt_160': '140-145',
-    'gt_160_lt_170': '145-149',
-    'gt_170_lt_180': '149-153',
-    'gt_180': '153-156'
-}
-
-
-def process_size_range(height, style):
-    size_range = None
-    if height < 160:
-        size_range = park_size_chart['lt_160'] if style == 'park' else freeride_size_chart['lt_160']
-    elif 160 <= height < 170:
-        size_range = park_size_chart['gt_160_lt_170'] if style == 'park' else freeride_size_chart['gt_160_lt_170']
-    elif 170 <= height < 180:
-        size_range = park_size_chart['gt_170_lt_180'] if style == 'park' else freeride_size_chart['gt_170_lt_180']
-    elif height > 180:
-        size_range = park_size_chart['gt_180'] if style == 'park' else freeride_size_chart['gt_180']
-    return size_range
-
-
-def process_queryset(gender, skills, style):
-    filter_dict = {'gender': 'Female' if gender == 'girl' else 'Male',
-                   'level': 'Beginner' if 'rookie' in skills else 'Intermediate-Advanced'}
-    if style == 'freestyle':
-        filter_dict['style'] = 'Park'
-    elif style == 'freeride':
-        filter_dict['style'] = 'Freeride'
-    else:
-        filter_dict['style'] = 'All mountain'
-    return filter_dict
