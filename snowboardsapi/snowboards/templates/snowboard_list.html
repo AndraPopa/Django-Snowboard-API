@@ -10,6 +10,11 @@
 <body id="bg" style="background-image: url('{% static "snowboard_gang.jpg" %}')">
 
 <h1>{{gender}}s who ride :)</h1>
+{% if rider_name %}
+<h1>happy riding {{ rider_name }}!</h1>
+{% else %}
+<h1>Happy riding!</h1>
+{% endif %}
 
 {% for snowboard in snowboards%}
 <h2><a href="{{ snowboard.reference_link }}">{{ snowboard }}</a></h2>

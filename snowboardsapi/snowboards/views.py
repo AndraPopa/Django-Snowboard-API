@@ -21,11 +21,11 @@ class ChooseSnowboardView(TemplateView):
         if request.method == "POST":
             gender = request.POST.get('gender')
             style = request.POST.get('style')
-            height = request.POST.get('height'),
+            rider_name = request.POST.get('rider_name'),
             skills = request.POST.get('skills'),
 
             return redirect(
-                f'/your-next-snowboard/?gender={gender}&skills={skills}&style={style}'
+                f'/your-next-snowboard/?rider_name={rider_name}&gender={gender}&skills={skills}&style={style}'
             )
 
 
@@ -38,13 +38,16 @@ class YourNextSnowboardView(ListView):
         gender = request.GET.get('gender')
         skills = request.GET.get('skills')
         style = request.GET.get('style')
+        rider_name = request.GET.get('rider_name')
+        rider_name = rider_name.split("'")[1].split("'")[0]
         filter = process_queryset(gender, skills, style)
         queryset = Snowboard.objects.filter(
             gender=filter['gender'],
             style=filter['style'],
             level=filter['level'],
         )
-        return render(request, self.template_name, {'gender': gender, 'snowboards': queryset})
+        return render(request, self.template_name,
+                      {'gender': gender, 'snowboards': queryset, 'rider_name': rider_name})
 
 
 def process_queryset(gender, skills, style):
