@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Your next ride!</title>
+    <style>
+        body {
+            background-image: url('static/snowboard_gang.jpg');
+            background-size: cover;
+        }
+    </style>
 
 </head>
           {% load static %}
@@ -31,7 +37,7 @@
 {% if size_range %}
 <h3>Recommended size range: {{ size_range }}</h3>
 {% else %}
-<h1>You did not enter your height, so we can not make recommendations for sizing.</h1>
+<h4>You did not enter your height, so we can not make recommendations for sizing.</h4>
 {% endif %}
 
 </body>
