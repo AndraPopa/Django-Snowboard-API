@@ -1,9 +1,10 @@
-from django.views.generic import TemplateView, ListView
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect, render
+from django.views.generic import ListView, TemplateView
 from rest_framework import viewsets
+
 from .models import Snowboard
-from .serializers import SnowboardSerializer
 from .process_snowboards import process_queryset, process_size_range
+from .serializers import SnowboardSerializer
 
 
 class SnowboardView(viewsets.ModelViewSet):
